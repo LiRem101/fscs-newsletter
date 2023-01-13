@@ -2,6 +2,8 @@
   (:require [org.httpkit.server :refer [run-server]]
             [reitit.ring :as ring]))
 
+(defonce server (atom nil))
+
 (def app
   (ring/ring-handler
     (ring/router
@@ -11,4 +13,11 @@
 
 (defn -main []
   (println "Server started")
-  (run-server app {:port 4000}))
+  (reset! server (run-server app {:port 4000})))
+
+(defn stop-server []
+  (reset! server nil))
+
+(defn restart-server []
+  (stop-server)
+  (-main))
