@@ -1,6 +1,6 @@
 # Added manually
 Newsletter_Tool.iml
-
+todo
 
 # Created by https://www.toptal.com/developers/gitignore/api/intellij+all,clojure
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij+all,clojure
@@ -110,3 +110,8 @@ fabric.properties
 !.idea/runConfigurations
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,clojure
+/yarn.lock
+/node_modules/
+/resources/public/js/
+/.shadow-cljs/
+/resources/public/css/

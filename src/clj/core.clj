@@ -5,7 +5,8 @@
             [reitit.ring.middleware.muuntaja :refer [format-negotiate-middleware
                                                      format-request-middleware
                                                      format-response-middleware]]
-            [muuntaja.core :as m]))
+            [muuntaja.core :as m]
+            [ring.middleware.cors :refer [wrap-cors]]))
 
 (defonce server (atom nil))
 
@@ -16,7 +17,10 @@
                        {:status 200
                         :body {:hello "world"}})}]]
       {:data {:muuntaja m/instance
-              :middleware [format-negotiate-middleware
+              :middleware [[wrap-cors
+                            :access-control-allow-origin [#"http://localhost:4200"]
+                            :access-control-allow-methods [:get :post :put :delete]]
+                           format-negotiate-middleware
                            format-response-middleware
                            exception-middleware
                            format-request-middleware]}})
