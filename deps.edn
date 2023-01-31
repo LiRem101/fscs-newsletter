@@ -1,6 +1,6 @@
 {:path ["src/clj" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
         metosin/reitit {:mvn/version "0.5.18"}
-        http-kit {:mvn/version "2.3.0"}
-        ring-cors {:mvn/version "0.1.13"}}
+        http-kit/http-kit {:mvn/version "2.3.0"}
+        ring-cors/ring-cors {:mvn/version "0.1.13"}}
  :aliases {:run {:main-opts ["-m" "clj.core"]}}}
