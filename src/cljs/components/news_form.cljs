@@ -13,8 +13,19 @@
            (fn [i v] ($ newsletter-display-item {:label v :value (get newsletter (keyword v)) :key i}))
            newsletter-form-fields)))
 
+(defnc newsletter-edit-item [{:keys [label value on-change]}]
+       (d/div
+         (d/label {:for label} (make-label-str label))
+         (d/input {:id label :value value :on-change on-change})))
+
 (defnc newsletter-edit [{:keys [newsletter]}]
-       (d/p "Newsletter Edit"))
+       (let [[state set-state] (hooks/use-state newsletter)]
+            (d/form
+              (map-indexed
+                (fn [i v]
+                    ($ newsletter-edit-item {:label v :value (get state (keyword v)) :key i
+                                             :on-change #(set-state (assoc state (keyword v) (.. % -target -value)))}))
+                newsletter-form-fields))))
 
 (defnc newsletter-form [{:keys [newsletter]}]
        (let [[edit set-edit] (hooks/use-state false)]
