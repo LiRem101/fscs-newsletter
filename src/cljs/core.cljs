@@ -1,23 +1,24 @@
 (ns core
   (:require
     [ajax.core :refer [GET]]
+    [components.list :refer [newsletter-list]]
+    [components.nav :refer [nav]]
     [helix.core :refer [defnc $]]
     [helix.dom :as d]
     [helix.hooks :as hooks]
     ["react-dom/client" :as rdom]))
 
-(defnc nav []
-       (d/nav {:class '[py-4 shadow]}
-              (d/div {:class '[container]}
-                     (d/h2 {:class '[text-xl]} "Contact Book"))))
-
 (defnc app []
-       (hooks/use-effect
-         :once
-         (GET "http://localhost:4000/api"
+       (let [[state set-state] (hooks/use-state nil)]
+         (hooks/use-effect
+           :once
+           (GET "http://localhost:4000/api"
               {:handler (fn [response]
-                            (.log js/console response))}))
-       (d/div ($ nav)))
+                            (set-state response))}))
+         (js/console.log state)
+         (d/div ($ nav)
+                (d/div {:class '[container pt-4]}
+                       ($ newsletter-list)))))
 
 (defonce root (rdom/createRoot (js/document.getElementById "app")))
 
