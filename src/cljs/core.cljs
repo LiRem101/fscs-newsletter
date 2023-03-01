@@ -3,6 +3,7 @@
     [ajax.core :refer [GET]]
     [components.list :refer [newsletter-list]]
     [components.nav :refer [nav]]
+    [components.news-form :refer [newsletter-form]]
     [helix.core :refer [defnc $]]
     [helix.dom :as d]
     [helix.hooks :as hooks]
@@ -16,9 +17,12 @@
               {:handler (fn [response]
                             (set-state response))}))
          (js/console.log state)
-         (d/div ($ nav)
-                (d/div {:class '[container pt-4]}
-                       ($ newsletter-list {:newsletter state})))))
+         (if state
+           (d/div ($ nav)
+                  (d/div {:class '[container pt-4]}
+                         ($ newsletter-list {:newsletter state})
+                         ($ newsletter-form {:newsletter (first state)})))
+           (d/p "Loading..."))))
 
 (defonce root (rdom/createRoot (js/document.getElementById "app")))
 
