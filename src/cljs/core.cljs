@@ -7,7 +7,7 @@
     [helix.core :refer [defnc $ provider]]
     [helix.dom :as d]
     [helix.hooks :as hooks]
-    [state :refer [app-state]]
+    [state :refer [app-reducer app-state initial-state]]
     ["react-dom/client" :as rdom]))
 
 (defnc app []
@@ -27,7 +27,7 @@
            (d/p "Loading..."))))
 
 (defnc provided-app []
-       (provider {:context app-state :value "app-state value"} ($ app)))
+       (provider {:context app-state :value (hooks/use-reducer app-reducer initial-state)} ($ app)))
 
 (defonce root (rdom/createRoot (js/document.getElementById "app")))
 
