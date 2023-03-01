@@ -2,6 +2,7 @@
   (:require [helix.core :refer [defnc $]]
             [helix.dom :as d]
             [helix.hooks :as hooks]
+            [state :refer [use-app-state]]
             [utils :refer [make-label-str newsletter-form-fields]]))
 
 (defnc newsletter-display-item [{:keys [label value]}]
@@ -27,8 +28,10 @@
                                              :on-change #(set-state (assoc state (keyword v) (.. % -target -value)))}))
                 newsletter-form-fields))))
 
-(defnc newsletter-form [{:keys [newsletter]}]
-       (let [[edit set-edit] (hooks/use-state false)]
+(defnc newsletter-form []
+       (let [[edit set-edit] (hooks/use-state false)
+             [state actions] (use-app-state)
+             newsletter (:selected state)]
             (d/div
               (d/h1 "Submit Form")
               (d/button {:on-click #(set-edit (not edit))}

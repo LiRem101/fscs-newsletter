@@ -7,23 +7,22 @@
     [helix.core :refer [defnc $ provider]]
     [helix.dom :as d]
     [helix.hooks :as hooks]
-    [state :refer [app-reducer app-state initial-state]]
+    [state :refer [app-reducer app-state initial-state use-app-state]]
     ["react-dom/client" :as rdom]))
 
 (defnc app []
-       (let [[state set-state] (hooks/use-state nil)
-             context-value (hooks/use-context app-state)]
+       (let [[state actions] (use-app-state)
+             init (:init actions)]
          (hooks/use-effect
            :once
            (GET "http://localhost:4000/api"
-              {:handler (fn [response]
-                            (set-state response))}))
-         (js/console.log context-value)
+              {:handler init}))
+         (js/console.log state)
          (if state
            (d/div ($ nav)
                   (d/div {:class '[container pt-4]}
-                         ($ newsletter-list {:newsletter state})
-                         ($ newsletter-form {:newsletter (first (:newsletter state))})))
+                         ($ newsletter-list)
+                         ($ newsletter-form)))
            (d/p "Loading..."))))
 
 (defnc provided-app []
