@@ -18,7 +18,7 @@
          (js/console.log state)
          (d/div ($ nav)
                 (d/div {:class '[container pt-4]}
-                       ($ newsletter-list)))))
+                       ($ newsletter-list {:newsletter state})))))
 
 (defonce root (rdom/createRoot (js/document.getElementById "app")))
 
