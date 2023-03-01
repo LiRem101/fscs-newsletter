@@ -15,7 +15,8 @@
     (ring/router
       [["/api" {:get (fn [req]
                        {:status 200
-                        :body {:hello "world"}})}]]
+                        :body {:newsletter [{:headline "Konsolenabend"}
+                                            {:headline "Spieleabend"}]}})}]]
       {:data {:muuntaja m/instance
               :middleware [[wrap-cors
                             :access-control-allow-origin [#"http://localhost:4200"]

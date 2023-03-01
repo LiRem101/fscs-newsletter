@@ -4,4 +4,5 @@
 
 (defnc newsletter-list [{:keys [newsletter]}]
        (d/div
-         (d/ul (:hello newsletter))))
+         (d/ul
+           (map-indexed (fn [i news] (d/li {:key i} (:headline news))) (:newsletter newsletter)))))
