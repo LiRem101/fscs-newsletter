@@ -1,15 +1,8 @@
 (ns components.news-form
   (:require [helix.core :refer [defnc $]]
             [helix.dom :as d]
-            [helix.hooks :as hooks]))
-
-(def newsletter-form-fields ["headline"])
-
-(defn make-label-str [s]
-      (str (-> s
-               (clojure.string/replace "_" " ")
-               clojure.string/capitalize)
-           ": "))
+            [helix.hooks :as hooks]
+            [utils :refer [make-label-str newsletter-form-fields]]))
 
 (defnc newsletter-display-item [{:keys [label value]}]
        (d/p (d/strong (make-label-str label)) value))
