@@ -21,7 +21,7 @@
            (d/div ($ nav)
                   (d/div {:class '[container pt-4]}
                          ($ newsletter-list {:newsletter state})
-                         ($ newsletter-form {:newsletter (first state)})))
+                         ($ newsletter-form {:newsletter (first (:newsletter state))})))
            (d/p "Loading..."))))
 
 (defonce root (rdom/createRoot (js/document.getElementById "app")))

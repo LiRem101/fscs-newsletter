@@ -3,8 +3,22 @@
             [helix.dom :as d]
             [helix.hooks :as hooks]))
 
+(def newsletter-form-fields ["headline"])
+
+(defn make-label-str [s]
+      (str (-> s
+               (clojure.string/replace "_" " ")
+               clojure.string/capitalize)
+           ": "))
+
+(defnc newsletter-display-item [{:keys [label value]}]
+       (d/p (d/strong (make-label-str label)) value))
+
 (defnc newsletter-display [{:keys [newsletter]}]
-       (d/p "Newsletter Display"))
+       (d/div
+         (map-indexed
+           (fn [i v] ($ newsletter-display-item {:label v :value (get newsletter (keyword v)) :key i}))
+           newsletter-form-fields)))
 
 (defnc newsletter-edit [{:keys [newsletter]}]
        (d/p "Newsletter Edit"))
