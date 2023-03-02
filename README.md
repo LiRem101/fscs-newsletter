@@ -1,7 +1,7 @@
 Run Backend:
 
 ```shell
-clj -M:run
+clj -M:backend
 ```
 
 Run Frontend:

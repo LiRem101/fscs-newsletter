@@ -1,4 +1,4 @@
-{:deps true
+{:deps {:aliases [:frontend]}
  :nrepl {:port 9000}
  :builds {:newsletter {:target :browser
                        :compiler-options {:output-feature-set :es6}
