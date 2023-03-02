@@ -1,13 +1,13 @@
-(ns core
+(ns frontend.core
   (:require
     [ajax.core :refer [GET]]
-    [components.list :refer [newsletter-list]]
-    [components.nav :refer [nav]]
-    [components.news-form :refer [newsletter-form]]
+    [frontend.components.list :refer [newsletter-list]]
+    [frontend.components.nav :refer [nav]]
+    [frontend.components.news-form :refer [newsletter-form]]
     [helix.core :refer [defnc $ provider]]
     [helix.dom :as d]
     [helix.hooks :as hooks]
-    [state :refer [app-reducer app-state initial-state use-app-state]]
+    [frontend.state :refer [app-reducer app-state initial-state use-app-state]]
     ["react-dom/client" :as rdom]))
 
 (defnc app []

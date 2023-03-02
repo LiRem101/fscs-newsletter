@@ -1,9 +1,9 @@
-(ns components.news-form
+(ns frontend.components.news-form
   (:require [helix.core :refer [defnc $]]
             [helix.dom :as d]
             [helix.hooks :as hooks]
-            [state :refer [use-app-state]]
-            [utils :refer [make-label-str newsletter-form-fields]]))
+            [frontend.state :refer [use-app-state]]
+            [frontend.utils :refer [make-label-str newsletter-form-fields]]))
 
 (defnc newsletter-display-item [{:keys [label value]}]
        (d/p (d/strong (make-label-str label)) value))

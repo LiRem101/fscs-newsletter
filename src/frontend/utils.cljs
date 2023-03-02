@@ -1,4 +1,4 @@
-(ns utils
+(ns frontend.utils
   (:require [clojure.string :refer [replace capitalize]]))
 
 (def newsletter-form-fields

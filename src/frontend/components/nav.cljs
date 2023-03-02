@@ -1,4 +1,4 @@
-(ns components.nav
+(ns frontend.components.nav
   (:require [helix.core :refer [defnc]]
             [helix.dom :as d]))
 

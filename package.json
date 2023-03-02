@@ -7,7 +7,7 @@
   "scripts": {
     "start": "yarn build-styles && shadow-cljs watch newsletter",
     "repl": "shadow-cljs cljs-repl newsletter",
-    "build-styles": "tailwind -i src/cljs/tailwind.css -o resources/public/css/main.css"
+    "build-styles": "tailwind -i src/frontend/tailwind.css -o resources/public/css/main.css"
   },
   "dependencies": {
     "react": "^18.2.0",

@@ -1,7 +1,7 @@
-(ns components.list
+(ns frontend.components.list
   (:require [helix.core :refer [defnc $]]
             [helix.dom :as d]
-            [state :refer [use-app-state]]))
+            [frontend.state :refer [use-app-state]]))
 
 (defnc newsletter-list-item [{:keys [news]}]
        (d/li (d/div (d/p (:headline news)))))
