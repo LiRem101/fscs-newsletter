@@ -1,8 +1,5 @@
-{:source-paths ["src"]
+{:deps true
  :nrepl {:port 9000}
- :dependencies [[cider/cider-nrepl "0.29.0"]
-                [cljs-ajax "0.8.4"]
-                [lilactown/helix "0.1.9"]]
  :builds {:newsletter {:target :browser
                        :compiler-options {:output-feature-set :es6}
                        :output-dir "resources/public/js"
