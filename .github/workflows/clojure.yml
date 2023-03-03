@@ -1,0 +1,23 @@
+name: Clojure CI
+
+on:
+  push: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: format-check
+        uses: vouch-opensource/tools.deps-build@1.0.1
+        with:
+          alias: :format-check
+      - name: linter-check
+        uses: vouch-opensource/tools.deps-build@1.0.1
+        with:
+          alias: :kondo
+      - name: run tests
+        uses: vouch-opensource/tools.deps-build@1.0.1
+        with:
+          alias: :test
