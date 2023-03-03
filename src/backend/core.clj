@@ -16,7 +16,7 @@
 (def app
   (ring/ring-handler
     (ring/router
-      [["/api" {:get (fn [req]
+      [["/api" {:get (fn [_req]
                        {:status 200
                         :body {:newsletter [{:headline "Konsolenabend"}
                                             {:headline "Spieleabend"}]}})}]]

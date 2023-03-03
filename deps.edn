@@ -11,4 +11,6 @@
            :format-check {:main-opts ["-m" "cljstyle.main" "check"]
                           :extra-deps {mvxcvi/cljstyle {:mvn/version "0.15.0"}}}
            :format-fix {:main-opts ["-m" "cljstyle.main" "fix"]
-                        :extra-deps {mvxcvi/cljstyle {:mvn/version "0.15.0"}}}}}
+                        :extra-deps {mvxcvi/cljstyle {:mvn/version "0.15.0"}}}
+           :kondo {:main-opts ["-m" "clj-kondo.main" "--lint" "src"]
+                   :extra-deps {clj-kondo/clj-kondo {:mvn/version "2022.06.22"}}}}}

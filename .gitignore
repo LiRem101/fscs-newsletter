@@ -115,3 +115,4 @@ fabric.properties
 /resources/public/js/
 /.shadow-cljs/
 /resources/public/css/
+/.clj-kondo/.cache/

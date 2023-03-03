@@ -36,7 +36,7 @@
 
 (defnc newsletter-form []
   (let [[edit set-edit] (hooks/use-state false)
-        [state actions] (use-app-state)
+        [state _actions] (use-app-state)
         newsletter (:selected state)]
     (d/div
       (d/h1 "Submit Form")
