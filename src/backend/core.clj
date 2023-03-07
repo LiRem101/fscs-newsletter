@@ -1,5 +1,8 @@
 (ns backend.core
   (:require
+    [backend.from-files :as ff]
+    [backend.manage-news :as news]
+    [backend.template-states :as state]
     [muuntaja.core :as m]
     [org.httpkit.server :refer [run-server]]
     [reitit.ring :as ring]
@@ -37,6 +40,9 @@
 (defn -main
   []
   (println "Server started")
+  (state/retrieve-from-files ff/get-templates)
+  (println "Loaded information from template files.")
+  (println (news/get-headlines @state/templates))
   (reset! server (run-server app {:port 4000})))
 
 
