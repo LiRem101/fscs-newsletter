@@ -1,4 +1,5 @@
 {
   "headline": "Spieleabend",
+  "type": "spieleabend",
   "content-html": "<p>Wenn du wieder Lust auf <i>Tikal</i>, <i>Beowulf</i> oder <i>Betrayal</i> hast, bist du bei unserem nächsten Spieleabend richtig. Wir sind am %DATUM%, ab %ZEIT% Uhr in Raum %ORT% und haben die Spiele aus <a href=\"https://fscs.hhu.de/veranstaltungen/spieleliste/\">unserem Fundus</a> da und die, die ihr selbst mitbringt. Von uns gibt es kostenloses Knabberzeug und Softdrinks.</p>"
 }

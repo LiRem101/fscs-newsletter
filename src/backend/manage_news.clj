@@ -1,6 +1,6 @@
 (ns backend.manage-news)
 
 
-(defn get-headlines
+(defn get-types
   [template-map]
-  (map :headline (filter :headline template-map)))
+  (map :type (filter :type template-map)))

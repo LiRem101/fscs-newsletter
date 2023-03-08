@@ -16,6 +16,12 @@
 (defonce server (atom nil))
 
 
+(def testvec
+  [{:headline "Konsolenabend" :type "konsolenabend" :place "44" :date "01.04" :time "11 Uhr"}
+   {:headline "Spieleabend" :type "spieleabend" :place "45" :date "11.04." :time "13 Uhr"}
+   {:headline "Aufruf" :type "anderes"}])
+
+
 (def app
   (ring/ring-handler
     (ring/router
@@ -42,7 +48,8 @@
   (println "Server started")
   (state/retrieve-from-files ff/get-templates)
   (println "Loaded information from template files.")
-  (println (news/get-headlines @state/templates))
+  (println (news/get-types @state/templates))
+  (println (str "Get info for " testvec))
   (reset! server (run-server app {:port 4000})))
 
 

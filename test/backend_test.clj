@@ -17,14 +17,14 @@
 
 (defn create-headline-map
   [strs prev-map]
-  (map #(merge {:headline %} prev-map) strs))
+  (map #(merge {:type %} prev-map) strs))
 
 
 (defspec test-get-headlines 10
   (prop/for-all
-    [without-headline (gen/list (gen/such-that #(not (:headline %)) (gen/map gen/keyword gen/string-ascii)))
+    [without-headline (gen/list (gen/such-that #(not (:type %)) (gen/map gen/keyword gen/string-ascii)))
      headline-list (gen/list gen/string-ascii)
-     map-for-headline (gen/such-that #(not (:headline %)) (gen/map gen/keyword gen/string-ascii))]
+     map-for-headline (gen/such-that #(not (:type %)) (gen/map gen/keyword gen/string-ascii))]
     (let [headline-map (create-headline-map headline-list map-for-headline)
           maps (concat headline-map without-headline)]
-      (= headline-list (news/get-headlines maps)))))
+      (= headline-list (news/get-types maps)))))
